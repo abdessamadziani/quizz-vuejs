@@ -6,9 +6,9 @@
    
     <div v-if="show" >
       <div style="text-align: center; color:#FFB84C; margin-top: 50px;">
-    <h1 style="text-transform: uppercase;">AWS Academy</h1>
+    <h1 style="text-transform: uppercase; font-size:55px;">AWS <span style="color:white;text-transform: capitalize;">Cloud  </span>Academy</h1>
     <br><br>
-    <h2 style="text-transform: uppercase;">show us your knowledge at our aws quizz</h2>
+    <h2 style="text-transform:capitalize;">show us your knowledge at our aws cloud quizz enjoy it</h2>
   </div>
       <div class="img">
         <img src="./assets/asset_logo_amazon-web-service.png" alt="img">
@@ -34,9 +34,9 @@
   </div>
   <div v-else class="hole" >
     <h1 style="color:#FFB84C"> Welcome {{name}}</h1>
-    <div class="container" id="container">
+    <!-- <div class="container" id="container">
         <div class="child"  ref="bar"></div>
-    </div>
+    </div> -->
     <section class="quiz" v-if=" !quizCompleted ">
       <div class="quiz-info">
        <span class="question">{{ getCurrentQuestion.question }}</span> 
@@ -78,18 +78,27 @@
 
         </label>
       </div>
+      <div class="btn-cercle">
       <button class="BtnNext" @click="nextQuestion" ref="next">{{ getCurrentQuestion.index == questions.length - 1
       ? 'Finish'
       : getCurrentQuestion.selected == null 
-         ? 'select an option'
+         ? 'Select An Option'
          : 'Next Question' }}</button>
+
+
+       <div class="cercle">
+        <span>{{currentQuestion +1 }} / {{ questions.length }}</span>
+       </div>
+
+
+</div>
     </section>
 
     <section v-else>
-      <div>
-        <h2>Quizz Finished</h2>
-        <h3> your score is {{ score }} / {{ questions.length }}</h3>
-        <div>
+      <div class="res-area">
+        <h1 style="color:white;font-size:40px;">Quizz Finished</h1>
+        <h2 class="score" > your score is {{ score }} / {{ questions.length }}</h2>
+        <div style="margin-top: 25px;">
           <ul>
             <li v-for="(question, index) in incorrect" :key="index">
               <!-- <p >{{ question.text }}</p> -->
@@ -97,10 +106,14 @@
               <p class="crct">
                 Correct answer : {{ question.options[question.answer] }}
               </p>
-              <p class="your">
+              <p style="margin-bottom: 20px;" class="your">
                 Your answer : {{ question.options[question.selected] }}
               </p>
             </li>
+
+
+            
+
           </ul>
         </div>
 
@@ -188,53 +201,133 @@ var incorrect=[];
 const questions = ref([
 
     {
-      question: 'what is vue js ?',
-      answer: 0,
-      options: [
-        'a frontend freamwork',
-        'a library',
-        'an ice cream maker',
-        'nothing'
-
-      ],
-      selected: null 
-
-    },
-    
-    {
-      question: 'what is html ?',
-      answer: 1,
-      options: [
-        'a frontend freamwork',
-        'hyper text markum language',
-        'an ice cream maker',
-        'nothing'
-
-      ],
-      selected: null 
-
-    },
-    
-    {
-      question: 'what is css  ?',
+      question: 'Why is AWS more economical than traditional data centers for applications with varying computeworkloads?',
       answer: 2,
       options: [
-        'a frontend freamwork',
-        'a library',
-        'cascading style sheet',
-        'nothing'
+        'Amazon EC2 costs are billed on a monthly basis',
+        'Users retain full administrative access to their Amazon EC2 instances',
+        'Amazon EC2 instances can be launched on demand when needed',
+        'Users can permanently run enough instances to handle peak workloads'
+
+      ],
+      selected: null 
+
+    },
+    
+    {
+      question: 'Which AWS service would simplify the migration of a database to AWS?',
+      answer: 1,
+      options: [
+        'AWS Storage Gateway',
+        'AWS Database Migration Service (AWS DMS)',
+        'Amazon EC2',
+        'Amazon AppStream 2.0'
+
+      ],
+      selected: null 
+
+    },
+    
+    {
+      question: 'Which AWS offering enables users to find, buy, and immediately start using software solutions in their AWS environment?',
+      answer: 3,
+      options: [
+        'AWS Config',
+        'AWS OpsWorks',
+        'AWS SDK',
+        'AWS Marketplace'
       ],
       selected: null 
 
     },
     {
-      question: 'what is bootstrap',
+      question: 'Which AWS networking service enables a company to create a virtual network within AWS?',
+      answer: 3,
+      options: [
+        'AWS Config',
+        'Amazon Route 53',
+        'AWS Direct Connect',
+        'Amazon Virtual Private Cloud (Amazon VPC)'
+
+      ],
+      selected: null 
+
+    },
+
+    
+    {
+      question: 'Which of the following is an AWS responsibility under the AWS shared responsibility model?',
+      answer: 1,
+      options: [
+        'Configuring third-party applications',
+        'Maintaining physical hardware',
+        'Securing application access and data',
+        'Managing guest operating systems'
+
+      ],
+      selected: null 
+
+    },
+    {
+      question: 'Which component of the AWS global infrastructure does Amazon CloudFront use to ensure low-latency delivery?',
+      answer: 1,
+      options: [
+        'AWS Regions',
+        'Edge locations',
+        'Availability Zones',
+        'Virtual Private Cloud (VPC)'
+
+      ],
+      selected: null 
+
+    },
+    {
+      question: 'How would a system administrator add an additional layer of login security to a user\'s AWS Management Console?',
+      answer: 3,
+      options: [
+        'se Amazon Cloud Directory',
+        'Audit AWS Identity and Access Management (IAM) roles',
+        'Enable multi-factor authentication',
+        'Enable AWS CloudTrail'
+
+      ],
+      selected: null 
+
+    },
+    {
+      question: 'Which service can identify the user that made the API call when an Amazon EC2 instance is terminated?',
+      answer: 1,
+      options: [
+        'AWS Trusted Advisor',
+        'AWS CloudTrail',
+        'AWS X-Ray',
+        'AWS Identity and Access Management (AWS IAM)'
+
+      ],
+      selected: null 
+
+    },
+    {
+      question: 'Which service would be used to send alerts based on Amazon CloudWatch alarms?',
       answer: 0,
       options: [
-        'a frontend freamwork of css',
-        'a library',
-        'cascading style sheet',
-        'nothing'
+        'Amazon Simple Notification Service (Amazon SNS)',
+        'AWS CloudTrail',
+        'AWS Trusted Advisor',
+        'Amazon Route 53'
+
+      ],
+      selected: null 
+
+    },
+    {
+      question: 'Where can a user find information about prohibited actions on the AWS infrastructure?',
+      answer: 3,
+      options: [
+        'AWS Trusted Advisor',
+        'AWS Identity and Access Management (IAM)',
+        'AWS Billing Console',
+        'AWS Acceptable Use Policy'
 
       ],
       selected: null 
@@ -294,6 +387,8 @@ const nextQuestion = () => {
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Pacifico&family=Permanent+Marker&family=Poppins:ital,wght@0,200;0,300;0,400;1,400;1,500&family=Rubik+Gemstones&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Montserrat:ital,wght@0,100;0,500;0,600;0,700;1,600&family=Pacifico&family=Permanent+Marker&family=Rubik+Gemstones&display=swap');
 *
 {
   margin: 0;
@@ -303,6 +398,7 @@ const nextQuestion = () => {
  body 
 {
  background-color: #F5EAEA;
+font-family: 'Montserrat', sans-serif;
 }
 .img 
 {
@@ -323,7 +419,7 @@ const nextQuestion = () => {
   border-radius: 5px;
   background: #efeaf4; */
             display:block;
-            width:400px;
+            width:500px;
             padding: 20px;
             font-size: 16px;
             font-weight: bold;
@@ -374,6 +470,33 @@ input:focus
   background-color:#4D455D;
 
 }
+.btn-cercle 
+{
+  display: flex;
+  justify-content:space-evenly;
+
+
+}
+
+.cercle 
+{
+  position: relative;
+  border:10px solid white;
+  width:200px;
+  border-radius: 50%;
+  margin: 50px 0;
+  padding: 30px;
+
+}
+.cercle span
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
+}
 
 .app 
 {
@@ -382,6 +505,10 @@ input:focus
   padding: 20px;
   text-align: center;
   
+}
+.quiz-info 
+{
+  margin: 30px 0;
 }
 .question 
 {
@@ -406,7 +533,7 @@ input:focus
 {
   background-color:#EEEEEE;
   color: rgb(0, 0, 0);
-  padding: 20px 30px;
+  padding: 30px 35px;
   border-radius: 10px;
   cursor: pointer;
 
@@ -420,15 +547,16 @@ input:focus
 .BtnNext
 {
   display: block;
-  margin: 40px auto;
-  width: 40%;
+  margin: 40px 70px;
+  width: 35%;
   background: rgb(255,139,19);
   background: linear-gradient(214deg, rgba(255,139,19,1) 10%, rgba(0,0,0,1) 62%);
   border-radius: 10px;
   cursor: pointer;
   border: none;
-  padding: 15px 25px;
+  padding: 20px 30px;
   color: white;
+  font-size: 30px;
 } 
 
 
@@ -524,8 +652,9 @@ label.wrong{
     display: block;
      widows: 80%;
      padding: 15px;
-     background-color: #000000;
+     background-color: #a18888;
      color: white;
+     margin-bottom: 20px;
    }
 
    @keyframes bardown
@@ -538,6 +667,29 @@ label.wrong{
    {
       width: 0%;
    }
+
+}
+
+.res-area 
+{
+  background-color: rgb(0, 0, 0);
+   width: 80%;
+   max-height: 70vh;
+   overflow: auto;
+   border: 10px solid grey;
+   margin: 10px auto;
+   text-align: center;
+   line-height: 1.9;
+   padding: 10px;
+}
+.score 
+{
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  width: 50%;
+  padding: 15px 24px;
+  background-color: #25dc81;
+  margin: 30px auto;
 
 }
 </style>
